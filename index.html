@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Outingo – Villas, Farmhouses, Resorts & Water Parks Near You</title>
+<meta name="description" content="Book villas, farmhouses, resorts, hidden party venues & water amusement parks for team outing, picnic outing & weekend getaways near Pune, Mumbai and more.">
+<meta name="keywords" content="outing near pune, picnic outing, team outing, villa booking, farmhouse booking, resort booking, water park near pune, hidden party venue">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=Caveat:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green: #1a6b3a;
+    --green-light: #2d8f52;
+    --green-pale: #e8f5ee;
+    --gold: #d4a843;
+    --gold-light: #f0c96b;
+    --cream: #faf7f0;
+    --dark: #0f1a10;
+    --text: #1c2b1e;
+    --muted: #6b7c6d;
+    --white: #ffffff;
+    --radius: 20px;
+    --shadow: 0 8px 40px rgba(26,107,58,0.13);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--text); overflow-x:hidden; }
+
+  /* ─── NAVBAR ─── */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:999;
+    display:flex; align-items:center; justify-content:space-between;
+    padding: 0 5%; height: 70px;
+    background: rgba(15,26,16,0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(212,168,67,0.2);
+  }
+  .logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
+  .logo-icon {
+    width:40px; height:40px; background: linear-gradient(135deg,var(--gold),var(--green-light));
+    border-radius:12px; display:flex; align-items:center; justify-content:center;
+    font-size:20px;
+  }
+  .logo-text { font-family:'Playfair Display',serif; font-size:1.6rem; font-weight:900; color:var(--white); letter-spacing:-0.5px; }
+  .logo-text span { color:var(--gold); }
+  .nav-links { display:flex; gap:32px; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.82); text-decoration:none; font-size:.92rem; font-weight:500; transition:.2s; }
+  .nav-links a:hover { color:var(--gold); }
+  .nav-cta {
+    background: linear-gradient(135deg,var(--gold),#c49030);
+    color:var(--dark); padding:10px 22px; border-radius:50px;
+    text-decoration:none; font-weight:600; font-size:.88rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .nav-cta:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(212,168,67,0.4); }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { width:24px; height:2px; background:white; border-radius:2px; }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height:100vh; position:relative; overflow:hidden;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding: 100px 5% 60px;
+  }
+  .hero-bg {
+    position:absolute; inset:0; z-index:0;
+    background: linear-gradient(160deg, #0a1a0b 0%, #1a3d20 40%, #0d2210 100%);
+  }
+  .hero-bg::before {
+    content:''; position:absolute; inset:0;
+    background: radial-gradient(ellipse 80% 60% at 50% 40%, rgba(212,168,67,0.12) 0%, transparent 70%);
+  }
+  .hero-bg::after {
+    content:''; position:absolute; inset:0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .floating-emojis { position:absolute; inset:0; pointer-events:none; z-index:1; }
+  .float-item {
+    position:absolute; font-size:2rem; opacity:1.18;
+    animation: floatAround 8s ease-in-out infinite;
+  }
+  .float-item:nth-child(1) { top:15%; left:8%; animation-delay:0s; }
+  .float-item:nth-child(2) { top:25%; right:10%; animation-delay:1.5s; }
+  .float-item:nth-child(3) { top:60%; left:5%; animation-delay:3s; }
+  .float-item:nth-child(4) { top:70%; right:8%; animation-delay:2s; }
+  .float-item:nth-child(5) { top:40%; left:15%; animation-delay:4s; }
+  .float-item:nth-child(6) { top:80%; left:30%; animation-delay:1s; }
+  @keyframes floatAround {
+    0%,100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(8deg); }
+  }
+  .hero-badge {
+    position:relative; z-index:2;
+    display:inline-flex; align-items:center; gap:8px;
+    background: rgba(212,168,67,0.15); border:1px solid rgba(212,168,67,0.4);
+    color:var(--gold-light); padding:7px 18px; border-radius:50px;
+    font-size:.82rem; font-weight:500; letter-spacing:.5px;
+    margin-bottom:24px; animation: fadeDown .8s ease both;
+  }
+  .hero h1 {
+    position:relative; z-index:2;
+    font-family:'Playfair Display',serif; font-weight:900;
+    font-size: clamp(2.4rem, 6vw, 5.2rem);
+    line-height:1.1; color:var(--white);
+    margin-bottom:20px;
+    animation: fadeDown .8s .1s ease both;
+  }
+  .hero h1 em { font-style:normal; color:var(--gold); }
+  .hero-sub {
+    position:relative; z-index:2;
+    font-size:clamp(1rem,2vw,1.2rem); color:rgba(255,255,255,0.7);
+    max-width:600px; line-height:1.7;
+    margin-bottom:36px; font-weight:300;
+    animation: fadeDown .8s .2s ease both;
+  }
+  .hero-actions { position:relative; z-index:2; display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation: fadeDown .8s .3s ease both; }
+  .btn-primary {
+    background: linear-gradient(135deg,var(--gold),#c49030);
+    color:var(--dark); padding:15px 34px; border-radius:50px;
+    text-decoration:none; font-weight:700; font-size:1rem;
+    transition: transform .2s, box-shadow .2s; box-shadow:0 4px 24px rgba(212,168,67,0.35);
+  }
+  .btn-primary:hover { transform:translateY(-3px); box-shadow:0 8px 32px rgba(212,168,67,0.5); }
+  .btn-outline {
+    border:2px solid rgba(255,255,255,0.3); color:white;
+    padding:14px 32px; border-radius:50px;
+    text-decoration:none; font-weight:500; font-size:1rem;
+    transition:.2s; backdrop-filter:blur(8px);
+  }
+  .btn-outline:hover { border-color:var(--gold); color:var(--gold); }
+
+  /* Search Box */
+  .search-box {
+    position:relative; z-index:2;
+    background:white; border-radius:20px; padding:8px;
+    display:flex; gap:6px; align-items:center; flex-wrap:wrap;
+    box-shadow:0 12px 50px rgba(0,0,0,0.4); margin-top:40px;
+    max-width:760px; width:100%;
+    animation: fadeUp .8s .4s ease both;
+  }
+  .search-field { display:flex; flex-direction:column; padding:10px 14px; flex:1; min-width:130px; }
+  .search-field label { font-size:.72rem; font-weight:600; color:var(--muted); text-transform:uppercase; letter-spacing:.6px; margin-bottom:4px; }
+  .search-field select, .search-field input {
+    border:none; outline:none; font-family:'DM Sans',sans-serif;
+    font-size:.95rem; color:var(--text); background:transparent; width:100%;
+  }
+  .search-divider { width:1px; height:44px; background:#e8e8e8; }
+  .search-btn {
+    background: linear-gradient(135deg,var(--green),var(--green-light));
+    color:white; border:none; border-radius:14px; padding:14px 26px;
+    font-size:.95rem; font-weight:600; cursor:pointer; white-space:nowrap;
+    transition:.2s; font-family:'DM Sans',sans-serif;
+  }
+  .search-btn:hover { transform:scale(1.03); box-shadow:0 4px 20px rgba(26,107,58,0.4); }
+
+  .hero-stats {
+    position:relative; z-index:2;
+    display:flex; gap:40px; margin-top:48px; flex-wrap:wrap; justify-content:center;
+    animation: fadeUp .8s .5s ease both;
+  }
+  .stat { text-align:center; }
+  .stat-num { font-family:'Playfair Display',serif; font-size:2rem; font-weight:900; color:var(--gold); }
+  .stat-label { font-size:.8rem; color:rgba(255,255,255,0.5); margin-top:2px; }
+
+  /* ─── SECTIONS GENERAL ─── */
+  section { padding: 80px 5%; }
+  .section-label {
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--green-pale); color:var(--green); padding:6px 16px; border-radius:50px;
+    font-size:.8rem; font-weight:600; text-transform:uppercase; letter-spacing:.6px; margin-bottom:14px;
+  }
+  .section-title { font-family:'Playfair Display',serif; font-size:clamp(1.8rem,4vw,2.8rem); font-weight:900; line-height:1.2; margin-bottom:14px; }
+  .section-sub { color:var(--muted); font-size:1rem; line-height:1.7; max-width:560px; }
+
+  /* ─── CATEGORIES ─── */
+  .categories { background:white; }
+  .cat-grid {
+    display:grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap:16px; margin-top:48px;
+  }
+  .cat-card {
+    border-radius:20px; overflow:hidden; position:relative; cursor:pointer;
+    aspect-ratio:3/4; min-height:240px;
+    transition: transform .3s, box-shadow .3s;
+    text-decoration:none;
+  }
+  .cat-card:hover { transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.2); }
+  .cat-bg {
+    position:absolute; inset:0; background-size:cover; background-position:center;
+    transition: transform .4s;
+  }
+  .cat-card:hover .cat-bg { transform:scale(1.06); }
+  .cat-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.1) 60%, transparent 100%);
+  }
+  .cat-info { position:absolute; bottom:0; left:0; right:0; padding:20px; }
+  .cat-emoji { font-size:2rem; margin-bottom:6px; display:block; }
+  .cat-name { color:white; font-weight:700; font-size:1.05rem; margin-bottom:2px; }
+  .cat-count { color:rgba(255,255,255,0.65); font-size:.8rem; }
+  .cat-card.featured { grid-row:span 2; }
+
+  /* ─── FREE OFFER BANNER ─── */
+  .free-banner {
+    background: linear-gradient(135deg, #0f1a10, #1a3d20);
+    border-radius:28px; padding:50px; position:relative; overflow:hidden; margin:0 5%;
+  }
+  .free-banner::before {
+    content:''; position:absolute; top:-60px; right:-60px;
+    width:280px; height:280px; border-radius:50%;
+    background: radial-gradient(circle, rgba(212,168,67,0.2), transparent 70%);
+  }
+  .free-banner-content { position:relative; z-index:1; display:flex; align-items:center; justify-content:space-between; gap:30px; flex-wrap:wrap; }
+  .free-tag {
+    font-family:'Caveat',cursive; font-size:1.4rem; color:var(--gold);
+    background:rgba(212,168,67,0.15); padding:6px 18px; border-radius:50px; display:inline-block; margin-bottom:12px;
+  }
+  .free-banner h2 { font-family:'Playfair Display',serif; font-size:clamp(1.6rem,3vw,2.4rem); color:white; font-weight:900; margin-bottom:10px; }
+  .free-banner p { color:rgba(255,255,255,0.65); line-height:1.7; max-width:480px; }
+  .free-btn {
+    background: linear-gradient(135deg,var(--gold),#c49030);
+    color:var(--dark); padding:16px 36px; border-radius:50px;
+    text-decoration:none; font-weight:700; font-size:1rem; white-space:nowrap;
+    transition:.2s; box-shadow:0 4px 24px rgba(212,168,67,0.4);
+  }
+  .free-btn:hover { transform:scale(1.04); }
+
+  /* ─── FEATURED PROPERTIES ─── */
+  .properties { background:var(--cream); }
+  .prop-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:40px; flex-wrap:wrap; gap:16px; }
+  .view-all { color:var(--green); text-decoration:none; font-weight:600; font-size:.9rem; display:flex; align-items:center; gap:6px; }
+  .view-all:hover { color:var(--green-light); }
+  .prop-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:24px; }
+  .prop-card {
+    background:white; border-radius:var(--radius); overflow:hidden;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.07); transition:.3s;
+    cursor:pointer;
+  }
+  .prop-card:hover { transform:translateY(-5px); box-shadow:var(--shadow); }
+  .prop-img {
+    height:220px; background-size:cover; background-position:center; position:relative;
+    transition: transform .4s;
+  }
+  .prop-card:hover .prop-img { transform:scale(1.03); }
+  .prop-img { overflow:hidden; }
+  .prop-badge {
+    position:absolute; top:14px; left:14px;
+    background:var(--gold); color:var(--dark); padding:5px 12px; border-radius:50px;
+    font-size:.75rem; font-weight:700;
+  }
+  .prop-badge.new { background:var(--green); color:white; }
+  .prop-badge.hot { background:#e53e3e; color:white; }
+  .prop-wish {
+    position:absolute; top:14px; right:14px;
+    background:white; width:36px; height:36px; border-radius:50%; border:none;
+    display:flex; align-items:center; justify-content:center; cursor:pointer; font-size:1.1rem;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15); transition:.2s;
+  }
+  .prop-wish:hover { transform:scale(1.15); }
+  .prop-body { padding:20px; }
+  .prop-type { font-size:.75rem; font-weight:600; color:var(--green); text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px; }
+  .prop-name { font-family:'Playfair Display',serif; font-size:1.15rem; font-weight:700; margin-bottom:8px; }
+  .prop-loc { color:var(--muted); font-size:.85rem; display:flex; align-items:center; gap:5px; margin-bottom:14px; }
+  .prop-features { display:flex; gap:14px; flex-wrap:wrap; margin-bottom:16px; }
+  .prop-feat { font-size:.8rem; color:var(--muted); display:flex; align-items:center; gap:4px; }
+  .prop-footer { display:flex; align-items:center; justify-content:space-between; padding-top:14px; border-top:1px solid #f0f0f0; }
+  .prop-price { font-family:'Playfair Display',serif; }
+  .prop-price .amt { font-size:1.3rem; font-weight:900; color:var(--green); }
+  .prop-price .per { font-size:.78rem; color:var(--muted); }
+  .prop-rating { display:flex; align-items:center; gap:5px; font-size:.85rem; font-weight:600; }
+  .prop-rating span { color:var(--muted); font-weight:400; }
+  .book-btn {
+    background: linear-gradient(135deg,var(--green),var(--green-light));
+    color:white; padding:9px 20px; border-radius:50px; border:none;
+    font-size:.85rem; font-weight:600; cursor:pointer; font-family:'DM Sans',sans-serif;
+    transition:.2s;
+  }
+  .book-btn:hover { box-shadow:0 4px 16px rgba(26,107,58,0.4); transform:scale(1.04); }
+
+  /* ─── HOW IT WORKS ─── */
+  .how { background:white; }
+  .how-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:32px; margin-top:50px; }
+  .how-card { text-align:center; padding:30px 20px; border-radius:20px; background:var(--cream); position:relative; }
+  .how-card::before {
+    content:attr(data-step); position:absolute; top:-16px; left:50%; transform:translateX(-50%);
+    width:36px; height:36px; background:var(--green); color:white; border-radius:50%;
+    display:flex; align-items:center; justify-content:center; font-weight:700; font-size:.85rem;
+    box-shadow:0 4px 14px rgba(26,107,58,0.3);
+  }
+  .how-icon { font-size:2.8rem; margin-bottom:14px; display:block; }
+  .how-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; font-weight:700; margin-bottom:8px; }
+  .how-card p { color:var(--muted); font-size:.88rem; line-height:1.6; }
+
+  /* ─── WATER PARK SECTION ─── */
+  .waterpark {
+    background: linear-gradient(160deg, #0a2e4a, #0d4f6e, #0a2e4a);
+    color:white; position:relative; overflow:hidden;
+  }
+  .waterpark::before {
+    content:''; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 20% 80%, rgba(0,180,255,0.15) 0%, transparent 50%),
+                      radial-gradient(circle at 80% 20%, rgba(0,120,255,0.1) 0%, transparent 50%);
+  }
+  .waves { position:absolute; bottom:0; left:0; right:0; }
+  .waves svg { display:block; }
+  .wp-content { position:relative; z-index:1; display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .wp-features { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:28px; }
+  .wp-feat {
+    background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.12);
+    border-radius:16px; padding:18px; transition:.2s;
+  }
+  .wp-feat:hover { background:rgba(255,255,255,0.14); }
+  .wp-feat-icon { font-size:1.8rem; margin-bottom:8px; }
+  .wp-feat h4 { font-size:.92rem; font-weight:600; margin-bottom:4px; }
+  .wp-feat p { font-size:.8rem; color:rgba(255,255,255,0.6); }
+  .wp-visual {
+    position:relative; border-radius:28px; overflow:hidden; height:420px;
+    background:linear-gradient(180deg, #0d6ea8 0%, #1a9bd4 50%, #23b4f0 100%);
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 20px 60px rgba(0,0,0,0.4);
+  }
+  .wp-visual-inner { font-size:8rem; animation: bounce 2s ease-in-out infinite; }
+  @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+
+  /* ─── HIDDEN PARTY ─── */
+  .party { background:var(--dark); color:white; position:relative; overflow:hidden; }
+  .party::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at 30% 50%, rgba(212,168,67,0.08) 0%, transparent 60%);
+  }
+  .party-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+  .party-visual {
+    border-radius:24px; background:linear-gradient(135deg, #1a0a30, #2d1050);
+    height:420px; display:flex; align-items:center; justify-content:center;
+    font-size:7rem; position:relative; overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,0.5);
+  }
+  .party-glow {
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 50% 50%, rgba(180,100,255,0.25), transparent 70%);
+  }
+  .confetti { position:absolute; width:100%; height:100%; pointer-events:none; }
+  .dot {
+    position:absolute; width:8px; height:8px; border-radius:50%;
+    animation: confettiFall 4s linear infinite;
+  }
+  @keyframes confettiFall {
+    0% { transform:translateY(-20px) rotate(0deg); opacity:1; }
+    100% { transform:translateY(440px) rotate(720deg); opacity:1; }
+  }
+  .party-badges { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+  .party-badge {
+    background:rgba(212,168,67,0.12); border:1px solid rgba(212,168,67,0.3);
+    color:var(--gold-light); padding:7px 16px; border-radius:50px; font-size:.82rem; font-weight:500;
+  }
+
+  /* ─── BOOKING FORM ─── */
+  .booking { background:var(--cream); }
+  .booking-card {
+    background:white; border-radius:28px; padding:50px;
+    box-shadow:0 4px 40px rgba(0,0,0,0.08); max-width:900px; margin:50px auto 0;
+  }
+  .booking-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+  .form-group { display:flex; flex-direction:column; gap:8px; }
+  .form-group.full { grid-column:span 2; }
+  label { font-size:.85rem; font-weight:600; color:var(--text); }
+  input, select, textarea {
+    border:2px solid #e8e8e8; border-radius:12px; padding:13px 16px;
+    font-family:'DM Sans',sans-serif; font-size:.95rem; color:var(--text);
+    outline:none; transition:.2s; background:white; width:100%;
+  }
+  input:focus, select:focus, textarea:focus { border-color:var(--green); box-shadow:0 0 0 3px rgba(26,107,58,0.1); }
+  textarea { resize:vertical; min-height:100px; }
+  .submit-btn {
+    background: linear-gradient(135deg,var(--green),var(--green-light));
+    color:white; padding:16px 40px; border-radius:50px; border:none;
+    font-size:1rem; font-weight:700; cursor:pointer; font-family:'DM Sans',sans-serif;
+    transition:.2s; box-shadow:0 4px 24px rgba(26,107,58,0.35); margin-top:8px;
+  }
+  .submit-btn:hover { transform:translateY(-2px); box-shadow:0 8px 30px rgba(26,107,58,0.4); }
+
+  /* ─── TESTIMONIALS ─── */
+  .testimonials { background:white; }
+  .testi-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:24px; margin-top:50px; }
+  .testi-card { background:var(--cream); border-radius:20px; padding:28px; position:relative; }
+  .quote-icon { font-size:2.5rem; color:var(--green-pale); position:absolute; top:18px; right:22px; line-height:1; }
+  .testi-text { font-size:.93rem; line-height:1.7; color:var(--text); margin-bottom:20px; font-style:italic; }
+  .testi-author { display:flex; align-items:center; gap:12px; }
+  .testi-avatar { width:46px; height:46px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:1.3rem; background:var(--green-pale); }
+  .testi-name { font-weight:700; font-size:.92rem; }
+  .testi-role { font-size:.78rem; color:var(--muted); }
+  .testi-stars { color:var(--gold); font-size:.85rem; margin-top:3px; }
+
+  /* ─── CTA FINAL ─── */
+  .cta-final {
+    background: linear-gradient(135deg, var(--green) 0%, #0d3d1f 100%);
+    text-align:center; color:white;
+  }
+  .cta-final h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:900; margin-bottom:16px; }
+  .cta-final p { color:rgba(255,255,255,0.75); font-size:1.1rem; margin-bottom:36px; max-width:540px; margin-left:auto; margin-right:auto; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background:var(--dark); color:rgba(255,255,255,0.65); padding:60px 5% 30px;
+  }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr 1fr; gap:40px; margin-bottom:40px; flex-wrap:wrap; }
+  .footer-brand .logo-text { font-size:1.4rem; color:white; }
+  .footer-brand p { margin-top:14px; line-height:1.7; font-size:.88rem; max-width:260px; }
+  .footer-links h4 { color:white; font-weight:700; margin-bottom:16px; font-size:.92rem; }
+  .footer-links ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .footer-links a { color:rgba(255,255,255,0.55); text-decoration:none; font-size:.87rem; transition:.2s; }
+  .footer-links a:hover { color:var(--gold); }
+  .footer-bottom { border-top:1px solid rgba(255,255,255,0.1); padding-top:24px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; font-size:.82rem; }
+  .social-links { display:flex; gap:12px; }
+  .social-link {
+    width:38px; height:38px; border-radius:50%; background:rgba(255,255,255,0.08);
+    display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:1rem;
+    transition:.2s;
+  }
+  .social-link:hover { background:var(--gold); }
+
+  /* ─── MODAL ─── */
+  .modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; display:none; align-items:center; justify-content:center; padding:20px; backdrop-filter:blur(6px); }
+  .modal-overlay.open { display:flex; }
+  .modal { background:white; border-radius:28px; padding:40px; max-width:500px; width:100%; position:relative; animation:modalPop .3s ease; }
+  @keyframes modalPop { from{transform:scale(0.9);opacity:1} to{transform:scale(1);opacity:1} }
+  .modal-close { position:absolute; top:20px; right:20px; background:#f0f0f0; border:none; width:36px; height:36px; border-radius:50%; cursor:pointer; font-size:1.1rem; }
+  .modal h3 { font-family:'Playfair Display',serif; font-size:1.6rem; margin-bottom:6px; }
+  .modal p { color:var(--muted); margin-bottom:24px; }
+  .modal-badge { background:var(--green-pale); color:var(--green); padding:10px 18px; border-radius:12px; font-weight:600; font-size:.9rem; margin-bottom:20px; display:inline-block; }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeDown { from{opacity:1;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+  @keyframes fadeUp { from{opacity:1;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+  .reveal { opacity:1; transform:translateY(0); transition:.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width:768px) {
+    .nav-links { display:none; }
+    .hamburger { display:flex; }
+    .nav-links.open { display:flex; flex-direction:column; position:fixed; top:70px; left:0; right:0; background:rgba(15,26,16,0.97); padding:20px 5%; gap:16px; }
+    .wp-content, .party-grid { grid-template-columns:1fr; }
+    .wp-visual, .party-visual { height:280px; font-size:5rem; }
+    .footer-grid { grid-template-columns:1fr 1fr; }
+    .booking-grid { grid-template-columns:1fr; }
+    .form-group.full { grid-column:span 1; }
+    .free-banner { padding:30px; }
+    .cat-card.featured { grid-row:span 1; }
+    .search-box { flex-direction:column; }
+    .search-divider { width:100%; height:1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="logo">
+    <div class="logo-icon">🌿</div>
+    <div class="logo-text">Out<span>ingo</span></div>
+  </a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#categories">Explore</a></li>
+    <li><a href="#properties">Properties</a></li>
+    <li><a href="#waterpark">Water Parks</a></li>
+    <li><a href="#party">Hidden Party</a></li>
+    <li><a href="#booking">Book Now</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-cta">🎯 Free 600 Months Trial</a>
+  <div class="hamburger" id="hamburger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="floating-emojis">
+    <div class="float-item">🏡</div>
+    <div class="float-item">🌊</div>
+    <div class="float-item">🎉</div>
+    <div class="float-item">🌿</div>
+    <div class="float-item">🏊</div>
+    <div class="float-item">🎊</div>
+  </div>
+
+  <div class="hero-badge">🇮🇳 India's #1 Outing Platform &nbsp;•&nbsp; Trusted by 50,000+ Groups</div>
+  <h1>Your Perfect <em>Outing</em><br>Starts Here</h1>
+  <p class="hero-sub">Villas • Farmhouses • Resorts • Water Parks • Hidden Party Venues — all in one place. Book team outings, picnic outings & weekend getaways near Pune, Mumbai & beyond.</p>
+
+  <div class="hero-actions">
+    <a href="#properties" class="btn-primary">🔍 Explore Properties</a>
+    <a href="#booking" class="btn-outline">📞 Get Free Consultation</a>
+  </div>
+
+  <div class="search-box">
+    <div class="search-field">
+      <label>📍 Location</label>
+      <select>
+        <option>Near Pune</option>
+        <option>Near Mumbai</option>
+        <option>Near Nashik</option>
+        <option>Near Lonavala</option>
+        <option>Near Mahabaleshwar</option>
+        <option>Pan India</option>
+      </select>
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>🏠 Type</label>
+      <select>
+        <option>All Types</option>
+        <option>Villa</option>
+        <option>Farmhouse</option>
+        <option>Resort</option>
+        <option>Water Park</option>
+        <option>Hidden Party Venue</option>
+      </select>
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>👥 Guests</label>
+      <input type="number" placeholder="50 guests" min="1">
+    </div>
+    <div class="search-divider"></div>
+    <div class="search-field">
+      <label>📅 Date</label>
+      <input type="date">
+    </div>
+    <button class="search-btn" onclick="searchProperties()">🔍 Search</button>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num">500+</div><div class="stat-label">Properties</div></div>
+    <div class="stat"><div class="stat-num">50K+</div><div class="stat-label">Happy Groups</div></div>
+    <div class="stat"><div class="stat-num">4.9⭐</div><div class="stat-label">Avg Rating</div></div>
+    <div class="stat"><div class="stat-num">600</div><div class="stat-label">Months Free Trial</div></div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categories">
+  <div class="reveal">
+    <div class="section-label">🗂️ Explore By Type</div>
+    <h2 class="section-title">Find Your <em>Ideal</em> Outing Spot</h2>
+    <p class="section-sub">From private villas for team retreats to wild water parks for school picnics — we have every vibe covered.</p>
+  </div>
+  <div class="cat-grid reveal">
+    <a class="cat-card featured" href="#" onclick="filterProp('Villa')">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#1a4a2e,#2d7a4a); background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🏡</span>
+        <div class="cat-name">Luxury Villas</div>
+        <div class="cat-count">120+ Properties</div>
+      </div>
+    </a>
+    <a class="cat-card" href="#" onclick="filterProp('Farmhouse')">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#3a2a1a,#6a4a2a); background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🌾</span>
+        <div class="cat-name">Farmhouses</div>
+        <div class="cat-count">180+ Properties</div>
+      </div>
+    </a>
+    <a class="cat-card" href="#" onclick="filterProp('Resort')">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#0a2a4a,#1a5a8a); background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🏨</span>
+        <div class="cat-name">Resorts</div>
+        <div class="cat-count">80+ Properties</div>
+      </div>
+    </a>
+    <a class="cat-card" href="#waterpark">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#0a3a5a,#1a7a9a); background-image:url('https://images.unsplash.com/photo-1540539234-c14a20fb7c7b?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🌊</span>
+        <div class="cat-name">Water Parks</div>
+        <div class="cat-count">25+ Parks</div>
+      </div>
+    </a>
+    <a class="cat-card" href="#party">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#2a0a4a,#5a1a8a); background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🎉</span>
+        <div class="cat-name">Hidden Party</div>
+        <div class="cat-count">60+ Venues</div>
+      </div>
+    </a>
+    <a class="cat-card" href="#">
+      <div class="cat-bg" style="background:linear-gradient(135deg,#1a3a1a,#2a6a2a); background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&q=80'); background-size:cover;"></div>
+      <div class="cat-overlay"></div>
+      <div class="cat-info">
+        <span class="cat-emoji">🌿</span>
+        <div class="cat-name">Eco Camps</div>
+        <div class="cat-count">45+ Camps</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!-- FREE OFFER BANNER -->
+<div class="free-banner reveal" id="free">
+  <div class="free-banner-content">
+    <div>
+      <div class="free-tag">🎁 Limited Time Offer</div>
+      <h2>600 Months FREE<br>For Everyone! 🎉</h2>
+      <p>Register your property or create your account today and enjoy 600 months of free listing with zero commission. No credit card required. India ka sabse generous outing platform!</p>
+    </div>
+    <div style="text-align:center;">
+      <div style="font-size:4rem; margin-bottom:16px;">🎊</div>
+      <a href="#booking" class="free-btn">Claim Free 600 Months →</a>
+      <div style="color:rgba(255,255,255,0.5); font-size:.78rem; margin-top:10px;">⚡ Limited slots available</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROPERTIES -->
+<section class="properties" id="properties">
+  <div class="prop-header reveal">
+    <div>
+      <div class="section-label">🏠 Featured Properties</div>
+      <h2 class="section-title">Top Picks Near You</h2>
+    </div>
+    <a href="#" class="view-all">View All Properties →</a>
+  </div>
+  <div class="prop-grid" id="propGrid">
+    <!-- Card 1 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1613490493576-7fde63acd811?w=700&q=80')">
+        <span class="prop-badge">🔥 Hot</span>
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🏡 Luxury Villa</div>
+        <div class="prop-name">Royal Palm Estate</div>
+        <div class="prop-loc">📍 Lonavala, Pune • 2hr drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 50-200 guests</span>
+          <span class="prop-feat">🏊 Private Pool</span>
+          <span class="prop-feat">🌿 5 Acres</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹25,000</span><br><span class="per">per day</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 4.9 <span>(142 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Royal Palm Estate')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 2 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=700&q=80')">
+        <span class="prop-badge new">🆕 New</span>
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🌾 Farmhouse</div>
+        <div class="prop-name">Green Valley Farmhouse</div>
+        <div class="prop-loc">📍 Mulshi, Pune • 45 min drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 30-150 guests</span>
+          <span class="prop-feat">🎡 Activities</span>
+          <span class="prop-feat">🍳 BBQ</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹18,000</span><br><span class="per">per day</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 4.8 <span>(98 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Green Valley Farmhouse')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 3 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?w=700&q=80')">
+        <span class="prop-badge" style="background:#9333ea;color:white;">👑 Premium</span>
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🏨 Resort</div>
+        <div class="prop-name">Sahyadri Mountain Resort</div>
+        <div class="prop-loc">📍 Mahabaleshwar • 3hr drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 100-500 guests</span>
+          <span class="prop-feat">🌊 Water slides</span>
+          <span class="prop-feat">🍽️ Catering</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹45,000</span><br><span class="per">per day</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 5.0 <span>(210 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Sahyadri Mountain Resort')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1519046904884-53103b34b206?w=700&q=80')">
+        <span class="prop-badge hot">🔴 Limited</span>
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🌊 Water Outing</div>
+        <div class="prop-name">Splash Kingdom Park</div>
+        <div class="prop-loc">📍 Khopoli, Mumbai • 1.5hr drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 50-1000 guests</span>
+          <span class="prop-feat">🎢 Rides</span>
+          <span class="prop-feat">🍔 Food Court</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹850</span><br><span class="per">per person</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 4.7 <span>(320 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Splash Kingdom Park')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=700&q=80')">
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🌿 Eco Retreat</div>
+        <div class="prop-name">Jungle Bloom Eco Camp</div>
+        <div class="prop-loc">📍 Tamhini Ghat • 1hr drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 20-80 guests</span>
+          <span class="prop-feat">⛺ Camping</span>
+          <span class="prop-feat">🌄 Trekking</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹8,500</span><br><span class="per">per day</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 4.9 <span>(76 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Jungle Bloom Eco Camp')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Card 6 -->
+    <div class="prop-card reveal">
+      <div class="prop-img" style="background-image:url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?w=700&q=80')">
+        <span class="prop-badge" style="background:#9333ea;color:white;">🎉 Hidden</span>
+        <button class="prop-wish" onclick="wishlist(this)">🤍</button>
+      </div>
+      <div class="prop-body">
+        <div class="prop-type">🎊 Hidden Party</div>
+        <div class="prop-name">Secret Garden Venue</div>
+        <div class="prop-loc">📍 Baner, Pune • 20 min drive</div>
+        <div class="prop-features">
+          <span class="prop-feat">👥 50-300 guests</span>
+          <span class="prop-feat">🎵 DJ</span>
+          <span class="prop-feat">💡 Decor</span>
+        </div>
+        <div class="prop-footer">
+          <div class="prop-price"><span class="amt">₹35,000</span><br><span class="per">per event</span></div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px;">
+            <div class="prop-rating">⭐ 4.8 <span>(189 reviews)</span></div>
+            <button class="book-btn" onclick="openBooking('Secret Garden Venue')">Book Now</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">⚡ How It Works</div>
+    <h2 class="section-title">Book in 3 Simple Steps</h2>
+    <p class="section-sub" style="margin:0 auto 50px;">From browsing to celebration — we make group bookings effortless.</p>
+  </div>
+  <div class="how-grid">
+    <div class="how-card reveal" data-step="1">
+      <span class="how-icon">🔍</span>
+      <h3>Search & Discover</h3>
+      <p>Filter by location, group size, date & budget. Explore 500+ verified properties with real photos.</p>
+    </div>
+    <div class="how-card reveal" data-step="2">
+      <span class="how-icon">📋</span>
+      <h3>Choose & Customize</h3>
+      <p>Select your venue. Customize with catering, decor, activities, transport & more add-ons.</p>
+    </div>
+    <div class="how-card reveal" data-step="3">
+      <span class="how-icon">💳</span>
+      <h3>Book Securely</h3>
+      <p>Pay securely online with UPI, Card or EMI. Get instant confirmation & dedicated support.</p>
+    </div>
+    <div class="how-card reveal" data-step="4">
+      <span class="how-icon">🎉</span>
+      <h3>Enjoy Your Outing!</h3>
+      <p>Show up and have the time of your life. Our team handles everything behind the scenes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WATER PARK SECTION -->
+<section class="waterpark" id="waterpark">
+  <div class="wp-content">
+    <div class="reveal">
+      <div class="section-label" style="background:rgba(255,255,255,0.15);color:white;">🌊 Water Amusement Parks</div>
+      <h2 class="section-title" style="color:white;">Splash, Slide &<br><em style="color:#7dd3fc">Wave Away!</em></h2>
+      <p style="color:rgba(255,255,255,0.7);line-height:1.7;max-width:480px;margin-bottom:28px;">Book exclusive water park packages for school trips, corporate picnics, birthday parties & family outings near Pune and Mumbai. Special group rates, private slots & catering included.</p>
+      <div class="wp-features">
+        <div class="wp-feat">
+          <div class="wp-feat-icon">🎢</div>
+          <h4>Thrilling Rides</h4>
+          <p>Wave pools, lazy rivers & high-speed slides</p>
+        </div>
+        <div class="wp-feat">
+          <div class="wp-feat-icon">🍔</div>
+          <h4>Food & Drinks</h4>
+          <p>Catering included with group bookings</p>
+        </div>
+        <div class="wp-feat">
+          <div class="wp-feat-icon">🏊</div>
+          <h4>Private Slots</h4>
+          <p>Book the whole park for your group</p>
+        </div>
+        <div class="wp-feat">
+          <div class="wp-feat-icon">🚌</div>
+          <h4>Transport</h4>
+          <p>Pickup & drop facility available</p>
+        </div>
+      </div>
+      <a href="#booking" class="btn-primary" style="display:inline-block;margin-top:28px;">🌊 Book Water Park Package</a>
+    </div>
+    <div class="reveal">
+      <div class="wp-visual">
+        <div class="wp-visual-inner">🌊</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIDDEN PARTY SECTION -->
+<section class="party" id="party">
+  <div class="party-grid">
+    <div class="reveal">
+      <div class="party-visual">
+        <div class="party-glow"></div>
+        <div class="confetti" id="confetti"></div>
+        <div style="position:relative;z-index:1;font-size:6rem;">🎉</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="section-label" style="background:rgba(212,168,67,0.15);color:var(--gold-light);">🎊 Hidden Party Venues</div>
+      <h2 class="section-title" style="color:white;">Surprise Parties<br><em style="color:var(--gold)">Nobody Sees Coming</em></h2>
+      <p style="color:rgba(255,255,255,0.65);line-height:1.7;margin-bottom:20px;">Exclusive, secret & jaw-dropping venues for birthdays, bachelorettes, anniversaries, corporate events & more. Complete decor + DJ + catering handled by our team.</p>
+      <div class="party-badges">
+        <span class="party-badge">🎂 Birthdays</span>
+        <span class="party-badge">💍 Anniversary</span>
+        <span class="party-badge">👰 Bachelorette</span>
+        <span class="party-badge">🏢 Corporate</span>
+        <span class="party-badge">🎓 Farewell</span>
+        <span class="party-badge">🎊 Surprise Party</span>
+      </div>
+      <div style="background:rgba(212,168,67,0.1);border:1px solid rgba(212,168,67,0.25);border-radius:16px;padding:20px;margin:20px 0;">
+        <div style="color:var(--gold);font-weight:700;margin-bottom:6px;">⭐ What's Included:</div>
+        <div style="color:rgba(255,255,255,0.7);font-size:.88rem;line-height:1.8;">✅ Secret location reveal on event day<br>✅ Professional decor & lighting<br>✅ DJ / Live music options<br>✅ Custom catering menu<br>✅ Photographer on request</div>
+      </div>
+      <a href="#booking" class="btn-primary" style="display:inline-block;">🎉 Plan Hidden Party</a>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING FORM -->
+<section class="booking" id="booking">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">📋 Booking System</div>
+    <h2 class="section-title">Book Your Outing Now</h2>
+    <p class="section-sub" style="margin:0 auto;">Fill the form below and our team will confirm within 30 minutes. 100% free consultation!</p>
+  </div>
+  <div class="booking-card reveal">
+    <div class="booking-grid">
+      <div class="form-group">
+        <label>👤 Your Full Name *</label>
+        <input type="text" placeholder="Rahul Sharma" id="bName">
+      </div>
+      <div class="form-group">
+        <label>📱 WhatsApp Number *</label>
+        <input type="tel" placeholder="+91 98765 43210" id="bPhone">
+      </div>
+      <div class="form-group">
+        <label>📧 Email Address</label>
+        <input type="email" placeholder="rahul@example.com" id="bEmail">
+      </div>
+      <div class="form-group">
+        <label>👥 Group Size *</label>
+        <select id="bGroup">
+          <option>Select group size</option>
+          <option>10–30 people</option>
+          <option>30–50 people</option>
+          <option>50–100 people</option>
+          <option>100–200 people</option>
+          <option>200–500 people</option>
+          <option>500+ people</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>🏠 Property Type *</label>
+        <select id="bType">
+          <option>Select type</option>
+          <option>Villa</option>
+          <option>Farmhouse</option>
+          <option>Resort</option>
+          <option>Water Amusement Park</option>
+          <option>Hidden Party Venue</option>
+          <option>Eco Camp</option>
+          <option>Any – Best Suggestion</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>📍 Preferred Location</label>
+        <select id="bLoc">
+          <option>Near Pune</option>
+          <option>Near Mumbai</option>
+          <option>Near Lonavala</option>
+          <option>Near Mahabaleshwar</option>
+          <option>Near Nashik</option>
+          <option>Anywhere in India</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>📅 Event Date *</label>
+        <input type="date" id="bDate">
+      </div>
+      <div class="form-group">
+        <label>💰 Budget Range</label>
+        <select id="bBudget">
+          <option>Select budget</option>
+          <option>Under ₹10,000</option>
+          <option>₹10,000 – ₹25,000</option>
+          <option>₹25,000 – ₹50,000</option>
+          <option>₹50,000 – ₹1 Lakh</option>
+          <option>₹1 Lakh+</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label>💬 Special Requirements</label>
+        <textarea placeholder="DJ, catering, pool, accommodation, games, transport, decor, surprise party details..." id="bNotes"></textarea>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:14px;margin-top:20px;flex-wrap:wrap;">
+      <button class="submit-btn" onclick="submitBooking()">🚀 Submit Booking Request</button>
+      <p style="color:var(--muted);font-size:.82rem;">🔒 Your info is 100% safe. We reply within 30 minutes on WhatsApp!</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div style="text-align:center;" class="reveal">
+    <div class="section-label">💬 Real Reviews</div>
+    <h2 class="section-title">What Our Customers Say</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="quote-icon">❝</div>
+      <p class="testi-text">We booked a farmhouse for 80 people for our company outing near Pune. Everything was perfect — pool, BBQ, DJ, catering. Outingo made it stress-free!</p>
+      <div class="testi-author">
+        <div class="testi-avatar">👨‍💼</div>
+        <div>
+          <div class="testi-name">Rohit Kulkarni</div>
+          <div class="testi-role">HR Manager, TechCorp Pune</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="quote-icon">❝</div>
+      <p class="testi-text">Hidden party venue for my wife's surprise anniversary — she was completely shocked! The decor, lighting, everything was magical. Thank you Outingo! 🎉</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🎊</div>
+        <div>
+          <div class="testi-name">Priya Joshi</div>
+          <div class="testi-role">Celebrated 10th Anniversary</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="quote-icon">❝</div>
+      <p class="testi-text">School picnic for 200 students at the water park — parents and teachers were so happy. Group discount was amazing and the safety was top notch.</p>
+      <div class="testi-author">
+        <div class="testi-avatar">🏫</div>
+        <div>
+          <div class="testi-name">Sunita Patil</div>
+          <div class="testi-role">Principal, Pune International School</div>
+          <div class="testi-stars">⭐⭐⭐⭐⭐</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="reveal" style="text-align:center;">
+    <div class="free-tag" style="display:inline-block;margin-bottom:16px;">🎯 Start Today — It's Free!</div>
+    <h2>Ready for Your Dream Outing?</h2>
+    <p>Join 50,000+ happy groups who booked with Outingo. 600 months free — no catch, no hidden fees!</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="#booking" class="btn-primary" style="font-size:1.05rem;padding:17px 40px;">🚀 Book Now for Free</a>
+      <a href="tel:+919999999999" class="btn-outline" style="font-size:1.05rem;padding:17px 40px;">📞 Call Us Now</a>
+    </div>
+    <div style="margin-top:28px;color:rgba(255,255,255,0.5);font-size:.85rem;">
+      📞 +91 99999 99999 &nbsp;•&nbsp; 📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="58303d34343718372d2c31363f37763136">[email&#160;protected]</a> &nbsp;•&nbsp; 💬 WhatsApp Available 24/7
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="logo">
+        <div class="logo-icon">🌿</div>
+        <div class="logo-text">Out<span style="color:var(--gold)">ingo</span></div>
+      </a>
+      <p>India's most trusted outing booking platform. Villas, farmhouses, resorts, water parks & hidden party venues — all in one place.</p>
+      <div style="margin-top:20px;">
+        <div style="color:rgba(255,255,255,0.4);font-size:.78rem;margin-bottom:8px;">Follow us</div>
+        <div class="social-links">
+          <a class="social-link" href="#">📘</a>
+          <a class="social-link" href="#">📸</a>
+          <a class="social-link" href="#">🐦</a>
+          <a class="social-link" href="#">▶️</a>
+          <a class="social-link" href="#">💬</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="#">Villas Near Pune</a></li>
+        <li><a href="#">Farmhouses Mumbai</a></li>
+        <li><a href="#">Team Outing Packages</a></li>
+        <li><a href="#">Water Parks</a></li>
+        <li><a href="#">Hidden Party Venues</a></li>
+        <li><a href="#">Eco Camps</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About Outingo</a></li>
+        <li><a href="#">List Your Property</a></li>
+        <li><a href="#">Become a Partner</a></li>
+        <li><a href="#">Careers</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Press</a></li>
+      </ul>
+    </div>
+    <div class="footer-links">
+      <h4>Support</h4>
+      <ul>
+        <li><a href="#">Help Center</a></li>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">Cancellation Policy</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">Sitemap</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 Outingo. All rights reserved. Made with ❤️ in India 🇮🇳</div>
+    <div style="color:rgba(255,255,255,0.35);font-size:.78rem;">🌿 outing near pune | picnic outing | team outing | villa booking</div>
+  </div>
+</footer>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div style="font-size:2rem;margin-bottom:10px;">🎉</div>
+    <h3>Booking Request Sent!</h3>
+    <p>Our team will contact you within 30 minutes on WhatsApp.</p>
+    <div class="modal-badge" id="modalPropName">Property Selected ✅</div>
+    <div style="background:var(--green-pale);border-radius:14px;padding:16px;margin-bottom:20px;">
+      <div style="font-weight:600;color:var(--green);margin-bottom:8px;">What happens next?</div>
+      <div style="font-size:.87rem;color:var(--muted);line-height:1.8;">
+        ✅ You'll get a WhatsApp confirmation<br>
+        ✅ Our expert will call & discuss your needs<br>
+        ✅ Get 3 custom proposals within 2 hours<br>
+        ✅ Pay only after you're 100% satisfied
+      </div>
+    </div>
+    <a href="https://wa.me/919999999999?text=Hi! I just booked on Outingo" class="submit-btn" style="display:block;text-align:center;text-decoration:none;">💬 Chat on WhatsApp</a>
+  </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) { e.target.classList.add('visible'); } });
+  }, { threshold: 0.1 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').style.background =
+      window.scrollY > 50 ? 'rgba(15,26,16,0.98)' : 'rgba(15,26,16,0.92)';
+  });
+
+  // Hamburger
+  function toggleNav() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+
+  // Wishlist
+  function wishlist(btn) {
+    btn.textContent = btn.textContent === '🤍' ? '❤️' : '🤍';
+    btn.style.transform = 'scale(1.3)';
+    setTimeout(() => btn.style.transform = '', 300);
+  }
+
+  // Booking modal
+  function openBooking(name) {
+    document.getElementById('modalPropName').textContent = name + ' ✅';
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+  }
+  document.getElementById('modalOverlay').addEventListener('click', function(e) {
+    if(e.target === this) closeModal();
+  });
+
+  // Submit form
+  function submitBooking() {
+    const name = document.getElementById('bName').value;
+    const phone = document.getElementById('bPhone').value;
+    const type = document.getElementById('bType').value;
+    if(!name || !phone || type === 'Select type') {
+      alert('Please fill in Name, Phone & Property Type!');
+      return;
+    }
+    openBooking(type);
+    document.querySelectorAll('#booking input, #booking select, #booking textarea').forEach(el => {
+      if(el.tagName !== 'BUTTON') el.value = '';
+    });
+  }
+
+  // Search
+  function searchProperties() {
+    const sec = document.getElementById('properties');
+    sec.scrollIntoView({ behavior:'smooth' });
+    sec.style.animation = 'pulse .5s ease';
+  }
+
+  // Filter categories
+  function filterProp(type) {
+    alert('Showing ' + type + ' properties near you...\n(Connect to backend for live filter!)');
+  }
+
+  // Confetti
+  const confettiEl = document.getElementById('confetti');
+  const colors = ['#d4a843','#f0c96b','#ffffff','#a78bfa','#60a5fa','#34d399'];
+  for(let i=0;i<18;i++){
+    const dot = document.createElement('div');
+    dot.className='dot';
+    dot.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${-Math.random()*20}px;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      a 
