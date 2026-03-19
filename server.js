@@ -11,11 +11,11 @@ app.use(cors({ origin: '*' }));
 app.use(express.json());
 
 // Firebase - commented out for now
-const serviceAccount = require('./firebase-service-account.json');
- admin.initializeApp({
-   credential: admin.credential.cert(serviceAccount),
-   databaseURL: process.env.FIREBASE_DB_URL
- });
+//const serviceAccount = require('./firebase-service-account.json');
+// admin.initializeApp({
+//   credential: admin.credential.cert(serviceAccount),
+//   databaseURL: process.env.FIREBASE_DB_URL
+// });
 
 // Razorpay
 const razorpay = new Razorpay({
